@@ -123,25 +123,36 @@ body {
   margin-bottom: 20px;
   height: 40px;
   display: grid;
-  grid-template: 1fr/minmax(200px, 1fr) minmax(70px, 100px);
+  grid-template: 1fr/minmax(220px, 1fr) minmax(70px, 100px);
 }
 .hero__panel input,
 .hero__panel button {
   font-size: 20px;
   border: 1px solid #555;
+  --radius: 30px;
+  --panel-color: #321bcc;
 }
 .hero__panel input {
   padding: 0 10px 0 20px;
-  border-bottom-left-radius: 30px;
-  border-top-left-radius: 30px;
+  border-bottom-left-radius: var(--radius);
+  border-top-left-radius: var(--radius);
   border-right: none;
+  -webkit-transition: -webkit-box-shadow 0.4s ease-in-out;
+  transition: -webkit-box-shadow 0.4s ease-in-out;
+  -o-transition: box-shadow 0.4s ease-in-out;
+  transition: box-shadow 0.4s ease-in-out;
+  transition: box-shadow 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
+}
+.hero__panel input:focus {
+  -webkit-box-shadow: 2px 3px 7px var(--panel-color);
+          box-shadow: 2px 3px 7px var(--panel-color);
 }
 .hero__panel button {
-  border-bottom-right-radius: 30px;
-  border-top-right-radius: 30px;
+  border-bottom-right-radius: var(--radius);
+  border-top-right-radius: var(--radius);
   color: #fff;
-  background-color: rgba(16, 21, 179, 0.83);
+  background-color: var(--panel-color);
 }
-.hero__count {
+.hero__quantity {
   margin-bottom: 40px;
 }
