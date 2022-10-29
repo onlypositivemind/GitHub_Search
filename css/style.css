@@ -97,12 +97,9 @@ body {
   margin: 0 auto;
 }
 
-.wrapper {
-  padding-top: 50px;
-}
-
 .header__container {
   margin-bottom: clamp(1.875rem, 1.515rem + 1.8vw, 3.125rem);
+  padding-top: clamp(1.25rem, 0.709rem + 2.7vw, 3.125rem);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -154,5 +151,26 @@ body {
   background-color: var(--panel-color);
 }
 .hero__quantity {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+}
+
+.card {
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+}
+.card__link {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.card__description {
+  font-weight: 300;
+  font-size: 14px;
 }

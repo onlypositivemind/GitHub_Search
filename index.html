@@ -12,29 +12,35 @@
 
 <body>
 
-	<div class="wrapper">
+	<header class="header">
+		<div class="header__container container">
+			<img class="header__logo" src="./icons/logo.svg" alt="GitHub logo">
+			<h1 class="header__title">GitHub Поиск</h1>
+		</div>
+	</header>
 
-		<header class="header">
-			<div class="header__container container">
-				<img class="header__logo" src="./icons/logo.svg" alt="GitHub logo">
-				<h1 class="header__title">GitHub Поиск</h1>
-			</div>
-		</header>
-
-		<main>
-			<section class="hero">
-				<div class="container">
-					<div class="hero__panel">
-						<input type="text" placeholder="JavaScript">
-						<button>Найти</button>
-					</div>
-					<p class="hero__quantity">Найдено 100 000 результатов</p>
-					<div class="hero__cards"></div>
+	<main>
+		<section class="hero">
+			<div class="container">
+				<div class="hero__panel">
+					<input type="text" placeholder="JavaScript">
+					<button>Найти</button>
 				</div>
-			</section>
-		</main>
+				<p class="hero__quantity">Найдено 100 000 результатов</p>
+				<div class="hero__cards">
 
-	</div>
+					<div class="hero__card card">
+						<img src="./icons/folder.svg" alt="folder image">
+						<div class="card__info">
+							<a href="#" class="card__link">microsoft/TypeScript</a>
+							<p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+	</main>
 
 	<script src="src/js/index.js"></script>
 </body>

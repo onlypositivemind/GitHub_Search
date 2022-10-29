@@ -9,13 +9,11 @@ body {
 	padding: 0 15px;
 	margin: 0 auto;
 }
-.wrapper {
-	padding-top: 50px;
-}
 
 .header {
 	&__container {
 		margin-bottom: clamp(1.875rem, 1.515rem + 1.8vw, 3.125rem);
+		padding-top: clamp(1.25rem, 0.709rem + 2.7vw, 3.125rem);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -60,9 +58,26 @@ body {
 	}
 
 	&__quantity {
-		margin-bottom: 40px;
+		margin-bottom: 20px;
+	}
+}
+.card {
+	margin-bottom: 30px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #eee;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	&__info {
 	}
 
-	&__cards {
+	&__link {
+		display: inline-block;
+		margin-bottom: 5px;
+	}
+
+	&__description {
+		font-weight: 300;
+		font-size: 14px;
 	}
 }
