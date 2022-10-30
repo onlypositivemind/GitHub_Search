@@ -153,9 +153,11 @@ body {
 .hero__quantity {
   margin-bottom: 20px;
 }
+.hero__card {
+  margin-bottom: 30px;
+}
 
 .card {
-  margin-bottom: 30px;
   padding-bottom: 15px;
   border-bottom: 1px solid #eee;
   display: -webkit-box;
