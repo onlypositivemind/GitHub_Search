@@ -70,12 +70,10 @@ body {
 	display: flex;
 	align-items: center;
 	gap: 15px;
-	&__info {
-	}
 
 	&__link {
 		display: inline-block;
-		margin-bottom: 5px;
+		margin-bottom: 10px;
 	}
 
 	&__description {
