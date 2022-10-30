@@ -54,6 +54,9 @@ body {
 			border-top-right-radius: var(--radius);
 			color: #fff;
 			background-color: var(--panel-color);
+			&:disabled {
+				background-color: #555;
+			}
 		}
 	}
 

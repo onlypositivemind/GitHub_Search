@@ -150,6 +150,9 @@ body {
   color: #fff;
   background-color: var(--panel-color);
 }
+.hero__panel button:disabled {
+  background-color: #555;
+}
 .hero__quantity {
   margin-bottom: 20px;
 }

@@ -21,19 +21,31 @@ const template = ({ items }) =>
 		)
 	)
 
-const renderCount = ({ total_count: qty }) =>
-	qty
-		? (quantityBlock.textContent = `Найдено ${qty} результатов`)
-		: (quantityBlock.textContent = 'По вашему запросу ничего не найдено')
+const renderEmptyResults = () =>
+	(quantityBlock.textContent = 'По вашему запросу ничего не найдено')
+
+const renderCount = ({ total_count }) => {
+	if (total_count > 0)
+		quantityBlock.textContent = `Найдено ${total_count} результатов`
+	else renderEmptyResults()
+}
 
 const clearing = () => {
 	outputBlock.innerHTML = null
 	quantityBlock.textContent = ''
 }
 
+const disableSearch = bool => {
+	return bool
+		? ((button.disabled = true), (input.disabled = true))
+		: ((button.disabled = false), (input.disabled = false))
+}
+
 const onSubmitStart = () => (quantityBlock.textContent = 'Загрузка...')
 
 const onSubmit = async () => {
+	disableSearch(true)
+
 	const response = await fetch(
 		`https://api.nomoreparties.co/github-search?q=*${input.value}`
 	)
@@ -41,10 +53,20 @@ const onSubmit = async () => {
 
 	renderCount(data)
 	template(data)
+
+	disableSearch(false)
 }
 
 button.addEventListener('click', evenet => {
 	clearing()
 	onSubmitStart()
 	onSubmit()
+})
+
+input.addEventListener('keypress', evenet => {
+	if (evenet.code === 'Enter') {
+		clearing()
+		onSubmitStart()
+		onSubmit()
+	}
 })
