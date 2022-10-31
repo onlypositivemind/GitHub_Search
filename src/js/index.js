@@ -8,16 +8,16 @@ const template = ({ items }) =>
 		outputBlock.insertAdjacentHTML(
 			'beforeend',
 			`
-					<div class="hero__card card">
-						<img src="./icons/folder.svg" alt="folder image">
-						<div class="card__info">
-							<a href="${item.clone_url}" class="card__link">${item.full_name}</a>
-							<p class="card__description">
-							${item.description ? item.description : 'Without description'}
-							</p>
-						</div>
-					</div>
-				`
+			<div class="hero__card card">
+				<img src="./icons/folder.svg" alt="folder image">
+				<div class="card__info">
+					<a target="_blank" href="${item.clone_url}" class="card__link">
+					${item.full_name}</a>
+					<p class="card__description">
+					${item.description ? item.description : 'Without description'}</p>
+				</div>
+			</div>
+			`
 		)
 	)
 
