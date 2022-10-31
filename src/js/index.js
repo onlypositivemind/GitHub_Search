@@ -41,18 +41,30 @@ const disableSearch = bool => (
 
 const onSubmitStart = () => (quantityBlock.textContent = 'Загрузка...')
 
+const renderError = () => (quantityBlock.textContent = 'Произошла ошибка')
+
+const getData = async url => {
+	const resposne = await fetch(url)
+	const json = await resposne.json()
+	return json
+}
+
+const url = 'https://api.nomoreparties.co/github-search?q=*'
+
 const onSubmit = async () => {
 	disableSearch(true)
 	clearing()
 	onSubmitStart()
 
-	const response = await fetch(
-		`https://api.nomoreparties.co/github-search?q=*${input.value}`
-	)
-	const data = await response.json()
+	try {
+		const data = await getData(url + `${input.value}`)
+		renderCount(data)
+		template(data)
+	} catch (error) {
+		console.log(error)
+		renderError()
+	}
 
-	renderCount(data)
-	template(data)
 	disableSearch(false)
 }
 
