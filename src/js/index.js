@@ -35,16 +35,16 @@ const clearing = () => {
 	quantityBlock.textContent = ''
 }
 
-const disableSearch = bool => {
-	return bool
-		? ((button.disabled = true), (input.disabled = true))
-		: ((button.disabled = false), (input.disabled = false))
-}
+const disableSearch = bool => (
+	(button.disabled = bool), (input.disabled = bool)
+)
 
 const onSubmitStart = () => (quantityBlock.textContent = 'Загрузка...')
 
 const onSubmit = async () => {
 	disableSearch(true)
+	clearing()
+	onSubmitStart()
 
 	const response = await fetch(
 		`https://api.nomoreparties.co/github-search?q=*${input.value}`
@@ -53,20 +53,11 @@ const onSubmit = async () => {
 
 	renderCount(data)
 	template(data)
-
 	disableSearch(false)
 }
 
-button.addEventListener('click', evenet => {
-	clearing()
-	onSubmitStart()
-	onSubmit()
-})
+button.addEventListener('click', onSubmit)
 
-input.addEventListener('keypress', evenet => {
-	if (evenet.code === 'Enter') {
-		clearing()
-		onSubmitStart()
-		onSubmit()
-	}
+input.addEventListener('keypress', event => {
+	if (event.code === 'Enter') onSubmit()
 })
