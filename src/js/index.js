@@ -30,10 +30,8 @@ const renderCount = ({ total_count }) => {
 	else renderEmptyResults()
 }
 
-const clearing = () => {
-	outputBlock.innerHTML = null
-	quantityBlock.textContent = ''
-}
+const clearing = () =>
+	(quantityBlock.textContent = outputBlock.innerHTML = null)
 
 const disableSearch = bool => (
 	(button.disabled = bool), (input.disabled = bool)
@@ -44,9 +42,14 @@ const onSubmitStart = () => (quantityBlock.textContent = 'Загрузка...')
 const renderError = () => (quantityBlock.textContent = 'Произошла ошибка')
 
 const getData = async url => {
-	const resposne = await fetch(url)
-	const json = await resposne.json()
-	return json
+	try {
+		const resposne = await fetch(url)
+		const json = await resposne.json()
+		return json
+	} catch {
+		renderError()
+		disableSearch(false)
+	}
 }
 
 const url = 'https://api.nomoreparties.co/github-search?q=*'
@@ -56,15 +59,9 @@ const onSubmit = async () => {
 	clearing()
 	onSubmitStart()
 
-	try {
-		const data = await getData(url + `${input.value}`)
-		renderCount(data)
-		template(data)
-	} catch (error) {
-		console.log(error)
-		renderError()
-	}
-
+	const data = await getData(url + `${input.value}`)
+	renderCount(data)
+	template(data)
 	disableSearch(false)
 }
 
