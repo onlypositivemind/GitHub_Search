@@ -48,6 +48,7 @@ const getData = async url => {
 		return json
 	} catch {
 		renderError()
+	} finally {
 		disableSearch(false)
 	}
 }
@@ -62,7 +63,6 @@ const onSubmit = async () => {
 	const data = await getData(url + `${input.value}`)
 	renderCount(data)
 	template(data)
-	disableSearch(false)
 }
 
 button.addEventListener('click', onSubmit)
